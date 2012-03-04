@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+This software is in the public domain, furnished "as is", without technical
+support, and with no warranty, express or implied, as to its usefulness for
+any purpose.
+-->
 <resources>
 
     <string name="hello">Hello World Yup (Iuri Diniz)</string>

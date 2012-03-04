@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+This software is in the public domain, furnished "as is", without technical
+support, and with no warranty, express or implied, as to its usefulness for
+any purpose.
+-->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.igdium.helloworld"
     android:versionCode="1"

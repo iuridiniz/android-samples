@@ -1,4 +1,5 @@
-/gen
-/bin
-/build.xml
-/local.properties
+helloworld/gen
+helloworld/bin
+helloworld/build.xml
+helloworld/local.properties
+helloworld/proguard-project.txt

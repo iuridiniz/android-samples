@@ -18,9 +18,9 @@
 
     $(document).ready(function() {
         if (isOnAndroid()) {
-            var photo_link = $("#photo_link");
-            photo_link.show();
-            photo_link.click(function(ev) {
+            var take_photo = $("#take_photo");
+            take_photo.show();
+            take_photo.click(function(ev) {
                 ev.preventDefault();
                 console.log("photo click")
                 WebViewUploadPhoto.alert("hello android");
@@ -30,10 +30,11 @@
             upload_form.show();
         }
     });
+
   </script>
   </head>
   <body>
-    <a id="photo_link" style="display:None">take a new photo</a>
+    <a id="take_photo" style="display:None">take a new photo</a>
     <form id="upload_form" 
           action="/upload_file" 
           enctype="multipart/form-data" 

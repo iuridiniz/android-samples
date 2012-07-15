@@ -3,9 +3,19 @@
 var formidable = require('formidable');
 var http = require('http');
 var util = require('util');
+var fs = require('fs');
 
 http.createServer(function(req, res) {
-    if (req.url == '/upload' && req.method.toLowerCase() == 'post') {
+    var url;
+    var method;
+    if (req.url == "/")
+        url = "/index.html";
+    else
+        url = req.url;
+
+    method = req.method.toLowerCase();
+
+    if (url == '/upload_file' && method == 'post') {
         // parse a file upload
         var form = new formidable.IncomingForm();
         form.parse(req, function(err, fields, files) {
@@ -16,15 +26,25 @@ http.createServer(function(req, res) {
         return;
     }
 
-    // show a file upload form
-    res.writeHead(200, {'content-type': 'text/html'});
-    res.end(
-        '<form action="/upload" enctype="multipart/form-data" method="post">'+
-        '<input type="text" name="title"><br>'+
-        '<input type="file" name="upload" multiple="multiple"><br>'+
-        '<input type="submit" value="Upload">'+
-        '</form>'
-      );
+    // else: serve a file from public
+    var filepath = __dirname + "/../public" + url;
+    fs.readFile(filepath, function(err, data) {
+        if (err && err.code == "ENOENT") {
+            res.writeHead(404, {'content-type': 'text/plain'});
+            res.end("url " + url + " does not exist here");
+            return
+        }
+        if (err) {
+            console.log("ERR: unable to process ", url, "\n", err);
+            res.writeHead(404, {'content-type': 'text/plain'});
+            res.end("Cannot process yout request");
+            return
+        }
+        res.writeHead(200);
+        res.end(data);
+        return
+    });
+    
 }).listen(9002, '0.0.0.0');
 
 console.log('Server running at http://127.0.0.1:9002/');

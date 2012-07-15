@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript">
+    function isOnAndroid() {
+        return "WebViewUploadPhoto" in window;
+    }
+    function takePhoto(){
+        if (isOnAndroid()) {
+            window.alert("Not in android");
+            return;
+        }
+        window.alert("In android");
+    }
+
+    $(document).ready(function() {
+        if (isOnAndroid()) {
+            var photo_link = $("#photo_link");
+            photo_link.show();
+        } else {
+            var upload_form = $("#upload_form");
+            upload_form.show();
+        }
+    });
+  </script>
+  </head>
+  <body>
+    <a id="photo_link" style="display:None">take a new photo</a>
+    <form id="upload_form" 
+          action="/upload_file" 
+          enctype="multipart/form-data" 
+          method="post"
+          style="display: None">
+      <input type="text" name="title"><br/>
+      <input type="file" name="upload" multiple="multiple"><br/>
+      <input type="submit" value="Upload">
+    </form>
+  </body>
+</html>

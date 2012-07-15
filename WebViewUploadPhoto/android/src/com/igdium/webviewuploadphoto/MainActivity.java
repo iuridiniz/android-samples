@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
     private static final String APPNAME = "WebViewUploadPhoto";
     private static final String HOME_URL = "http://172.20.20.5:9002/";
     private WebView webview;
+    private JavaScriptInterface jsInterface;
     
     private class JavaScriptInterface {
        @SuppressWarnings("unused")
@@ -44,6 +45,9 @@ public class MainActivity extends Activity {
         /* allow javascript */
         WebSettings ws = webview.getSettings();
         ws.setJavaScriptEnabled(true);
+        
+        jsInterface = new JavaScriptInterface();
+        webview.addJavascriptInterface(jsInterface, APPNAME);
 
         /* use console.log */
         webview.setWebChromeClient(new WebChromeClient() {
@@ -69,9 +73,7 @@ public class MainActivity extends Activity {
                 return true;
             }
         });
-        
-        /* setup javascript interface */
-        webview.addJavascriptInterface(new JavaScriptInterface(), APPNAME);
+
     }
     
     @Override

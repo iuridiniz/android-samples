@@ -26,6 +26,12 @@ public class MainActivity extends Activity {
        public void alert(String msg) {
            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
        }
+       
+       @SuppressWarnings("unused")
+       public void getPhoto(String cb) {
+           /* FIXME: SECURITY WARNING --> untrusted way to run a callback */
+           webview.loadUrl("javascript:(" + cb + ")()");
+       }
     }
     @Override
     public void onCreate(Bundle savedInstanceState) {

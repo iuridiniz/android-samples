@@ -29,6 +29,9 @@
             _alert("Not in android");
             return;
         }
+        WebViewUploadPhoto.getPhoto(function (bl) {
+            _alert("bl");
+        });
     }
 
     function submitPhoto() {

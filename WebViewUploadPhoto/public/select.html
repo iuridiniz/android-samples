@@ -32,7 +32,14 @@
     }
 
     function submitPhoto() {
-
+        var photo = $("#photo");
+        var data = photo.attr("src");
+        var filename = photo.attr("data-filename");
+        $.post("/upload_file", 
+          {data: data, filename: filename}, 
+          function (data, textStatus) {
+            console.log("POST RESULT", data, textStatus);
+        });
     }
 
     function setPhoto(data, name) {
@@ -85,6 +92,9 @@
                 getFiles(files);
             });
         }
+        $("#send").click(function (ev) {
+            submitPhoto();
+        });
 
     });
 
@@ -94,7 +104,7 @@
     <input type="submit" id="take_photo" name="take_photo" 
             value="take a new photo" style="display: None"/>
     <input id="select_file" style="display: None" type="file" name="upload"/>
-    <input type="submit" name="send" value="send"/>
+    <input id="send", type="submit" name="send" value="send"/>
     <div><img id="photo" class="thumb" style="display:None"/></div>
   </body>
 </html>

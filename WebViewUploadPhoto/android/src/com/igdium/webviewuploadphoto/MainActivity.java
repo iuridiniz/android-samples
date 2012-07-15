@@ -22,6 +22,7 @@ public class MainActivity extends Activity {
     private WebView webview;
     
     private class JavaScriptInterface {
+       @SuppressWarnings("unused")
        public void alert(String msg) {
            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
        }

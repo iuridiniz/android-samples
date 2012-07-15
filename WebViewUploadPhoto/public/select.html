@@ -20,6 +20,11 @@
         if (isOnAndroid()) {
             var photo_link = $("#photo_link");
             photo_link.show();
+            photo_link.click(function(ev) {
+                ev.preventDefault();
+                console.log("photo click")
+                WebViewUploadPhoto.alert("hello android");
+            });
         } else {
             var upload_form = $("#upload_form");
             upload_form.show();

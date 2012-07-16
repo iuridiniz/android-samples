@@ -27,10 +27,11 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 @SuppressLint("SetJavaScriptEnabled")
-public class MainActivity extends Activity {
+public class UploadPhoto extends Activity {
 
     private static final String APPNAME = "WebViewUploadPhoto";
-    private static final String HOME_URL = "http://172.20.20.5:9002/";
+    //private static final String HOME_URL = "http://172.20.20.5:9002/";
+    private static final String HOME_URL = "http://172.16.0.57:9002/";
     private WebView webview;
     private JavaScriptInterface jsInterface;
     private static final int REQUEST_IMAGE_GALLERY_CODE = 1;
@@ -57,7 +58,7 @@ public class MainActivity extends Activity {
         
         @SuppressWarnings("unused")
         public void alert(String msg) {
-            Toast.makeText(MainActivity.this, msg, Toast.LENGTH_SHORT).show();
+            Toast.makeText(UploadPhoto.this, msg, Toast.LENGTH_SHORT).show();
         }
        
 

@@ -24,16 +24,6 @@
         return "WebViewUploadPhoto" in window;
     }
 
-
-    function _gotPhoto(data, filename, err) {
-        //console.log(data, filename, err);
-        if (err) {
-            _alert("Error while picking photo: " + err);
-            return;
-        }
-        setPhoto(data, filename);
-    }
-
     function takePhoto() {
         if (! isOnAndroid()) {
             _alert("Not in android");

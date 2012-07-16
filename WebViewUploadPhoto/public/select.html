@@ -47,6 +47,7 @@
           {data: data, filename: filename}, 
           function (data, textStatus) {
             console.log("POST RESULT", data, textStatus);
+            _alert("Posted: " + textStatus);
         });
     }
 

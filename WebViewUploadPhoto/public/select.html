@@ -39,8 +39,14 @@
             _alert("Not in android");
             return;
         }
-        //WebViewUploadPhoto.pickPhoto("_gotPhoto");
-        WebViewUploadPhoto.takePhoto("_gotPhoto");
+        WebViewUploadPhoto.pickPhoto((function (data, filename, err) {
+            console.log(data, filename, err);
+            if (err) {
+                _alert("Error while picking photo: " + err);
+                return;
+            }
+            setPhoto(data, filename);
+        }).toString());
     }
 
     function submitPhoto() {

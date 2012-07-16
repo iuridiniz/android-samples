@@ -6,7 +6,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <style>
     .thumb {
-        height: 300px;
+        height: 200px;
         border: 1px solid #000;
         margin: 10px 5px 0 0;
     }
@@ -29,8 +29,13 @@
             _alert("Not in android");
             return;
         }
-        WebViewUploadPhoto.getPhoto(function (bl) {
-            _alert("bl");
+        WebViewUploadPhoto.pickPhoto(function (data, filename, err) {
+            console.log(data, filename, err);
+            if (err) {
+                _alert("Error while picking photo: " + err);
+                return;
+            }
+            setPhoto(data, filename);
         });
     }
 
